@@ -3,6 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { createStore } from "redux";
+
+function chatReducer(state = [], action) {
+  return "state";
+}
+const store = createStore(chatReducer);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

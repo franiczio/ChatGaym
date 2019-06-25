@@ -6,7 +6,7 @@ class chat extends Component {
         <h3>CHAT</h3>
         <p>state here</p>
         <form>
-          <input />
+          <textarea type="text" onKeyDown={this._handleKeyDown} />
         </form>
       </Fragment>
     );
