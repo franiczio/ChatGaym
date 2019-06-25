@@ -1,18 +1,16 @@
 import React from "react";
+import logo from "./logo.svg";
 import "./App.css";
 import { Component } from "react";
 import { createStore } from "redux";
-
-function reducer() {
-  return "state";
-}
-const store = createStore(reducer);
-
-console.log(store.getState());
-
+import Chat from "./components/chat";
 class App extends Component {
   render() {
-    return <div>HELLO WORLD</div>;
+    return (
+      <div>
+        <Chat />
+      </div>
+    );
   }
 }
 
