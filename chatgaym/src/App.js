@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <h1>My Chat Game</h1>
-        <Chat />
+        <Chat content="asddasd" />
       </div>
     );
   }

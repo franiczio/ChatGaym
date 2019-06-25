@@ -5,10 +5,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 
-function chatReducer(state = [], action) {
+function allReducers(state = [], action) {
   return "state";
 }
-const store = createStore(chatReducer);
+const store = createStore(allReducers, {
+  chatContent: []
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
