@@ -4,6 +4,10 @@ class chat extends Component {
     return (
       <Fragment>
         <h3>CHAT</h3>
+        <p>state here</p>
+        <form>
+          <input />
+        </form>
       </Fragment>
     );
   }
