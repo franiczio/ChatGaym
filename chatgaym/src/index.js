@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import chatReducer from "./Reducers/chat-reducer";
 
-function allReducers(state = [], action) {
-  return "state";
-}
+const allReducers = combineReducers({
+  chat: chatReducer
+});
 const store = createStore(allReducers, {
   chatContent: []
 });
