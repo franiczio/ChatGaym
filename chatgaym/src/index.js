@@ -4,14 +4,22 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, combineReducers } from "redux";
-import chatReducer from "./Reducers/chat-reducer";
+//import chatReducer from "./Reducers/chat-reducer";
+
+const UPDATE_CHAT = "chat:updateChat";
+function chatReducer(state = [], { type, payload }) {
+  switch (type) {
+    case UPDATE_CHAT:
+      return payload.message;
+    default:
+      return state;
+  }
+}
 
 const allReducers = combineReducers({
   chat: chatReducer
 });
-const store = createStore(allReducers, {
-  chatContent: []
-});
+const store = createStore(allReducers);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
