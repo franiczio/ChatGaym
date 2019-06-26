@@ -4,6 +4,8 @@ import "./App.css";
 import { Component } from "react";
 import Chat from "./Components/chat";
 import { ReactReduxContext } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import chatReducer from "./Reducers/chat-reducer";
 
 class App extends Component {
   render() {
@@ -15,12 +17,12 @@ class App extends Component {
     );
   }
 }
-
+const store = createStore(chatReducer);
 const Provider = ReactReduxContext.Provider;
 class AppWrapper extends Comment {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <App />
       </Provider>
     );
