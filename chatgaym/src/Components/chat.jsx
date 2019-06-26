@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
+// import updateChatContent from "./Actions/chat-Actions";
+
 const UPDATE_CHAT = "chat:updateChat";
 
 class Chat extends Component {
   updateChatContent = event => {
     if (event.key === "Enter") {
       console.log(event.target.value);
+      // this.props.state;
       event.target.value = "";
     }
     return {
