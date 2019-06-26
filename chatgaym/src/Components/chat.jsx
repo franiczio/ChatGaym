@@ -1,16 +1,7 @@
 import React, { Component, Fragment } from "react";
-import updateChatContent from "../Actions/chat-actions";
-import { bindActionCreators } from "redux";
-import chatReducer from "../Reducers/chat-reducer";
 const UPDATE_CHAT = "chat:updateChat";
 
-class chat extends Component {
-  handleKeyDown = e => {
-    if (e.key === "Enter") {
-      console.log("KLIKŁEM ENTER");
-    }
-  };
-
+class Chat extends Component {
   updateChatContent = event => {
     if (event.key === "Enter") {
       console.log(event.target.value);
@@ -37,4 +28,4 @@ class chat extends Component {
   }
 }
 
-export default chat;
+export default Chat;
