@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Component } from "react";
 import Chat from "./Components/chat";
-import { ReactReduxContext } from "react-redux";
+import { ReactReduxContext, connect } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import chatReducer from "./Reducers/chat-reducer";
 import updateChatContent from "./Actions/chat-actions";
@@ -52,4 +52,8 @@ class AppWrapper extends Comment {
   }
 }
 
+const ConnectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 export default App;
