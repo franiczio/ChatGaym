@@ -6,6 +6,7 @@ import Chat from "./Components/chat";
 import { ReactReduxContext } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import chatReducer from "./Reducers/chat-reducer";
+import updateChatContent from "./Actions/chat-actions";
 
 class App extends Component {
   constructor(props) {
@@ -26,12 +27,20 @@ class App extends Component {
 }
 const store = createStore(chatReducer);
 const Provider = ReactReduxContext.Provider;
-
-// const mapStateToProps = (state) =>{
-//   reutrn{
-//     messages:state
-//   };
-// }
+// store.subscribe();
+const mapStateToProps = state => {
+  return {
+    messages: state
+  };
+};
+// store.dispatch();
+const mapDispatchToProps = dispatch => {
+  return {
+    submitNewMessage: message => {
+      dispatch(updateChatContent(message));
+    }
+  };
+};
 
 class AppWrapper extends Comment {
   render() {
