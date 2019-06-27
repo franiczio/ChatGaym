@@ -24,8 +24,8 @@ class Chat extends Component {
       <Fragment>
         <h3>CHAT</h3>
         <div>
-          {this.props.chat.map(p => (
-            <p>{p}</p>
+          {this.props.chat.map((p, i) => (
+            <p key={i}>{p}</p>
           ))}
         </div>
         <form>
