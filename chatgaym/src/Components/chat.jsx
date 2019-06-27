@@ -23,7 +23,11 @@ class Chat extends Component {
     return (
       <Fragment>
         <h3>CHAT</h3>
-        <div>{this.props.chat}</div>
+        <div>
+          {this.props.chat.map(p => (
+            <p>{p}</p>
+          ))}
+        </div>
         <form>
           <textarea type="text" onKeyDown={this.onUpdateChat} />
         </form>
