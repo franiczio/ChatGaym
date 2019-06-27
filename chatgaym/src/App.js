@@ -9,6 +9,7 @@ import { bindActionCreators } from "redux";
 
 class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <div>
         <div>HelloWorld</div>
@@ -17,4 +18,8 @@ class App extends Component {
     );
   }
 }
-export default App;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps)(App);

@@ -6,24 +6,25 @@ import AppWrapper from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, combineReducers } from "redux";
 import { ReactReduxContent } from "react-redux";
-
-function chatReducer(state = [], action) {
-  return state;
-}
-function playerReducer(state = "", action) {
-  return "state";
-}
+import { Provider } from "react-redux";
+import chatReducer from "./Reducers/chatReducer";
+import playerReducer from "./Reducers/playerReducer";
 
 const allReducers = combineReducers({
   chat: chatReducer,
   player: playerReducer
 });
 
-const store = createStore(allReducers);
+const store = createStore(allReducers, {
+  chat: ["Hello dear user"]
+});
 
-console.log(store.getState());
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
