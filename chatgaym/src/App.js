@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Component } from "react";
 import Chat from "./Components/chat";
+import UserList from "./Components/userlist";
 import { ReactReduxContext, connect } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { bindActionCreators } from "redux";
@@ -12,8 +13,9 @@ class App extends Component {
     console.log(this.props);
     return (
       <div>
-        <div>HelloWorld</div>
+        <h1>CHAT GAME</h1>
         <Chat />
+        <UserList />
       </div>
     );
   }
