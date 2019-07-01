@@ -5,8 +5,6 @@ import updateChat from "../Actions/chatActions";
 // import updateChatContent from "./Actions/chat-Actions";
 // import chatReducer from "./Reducers/chat-reducer";
 
-const UPDATE_CHAT = "chat:updateChat";
-
 class Chat extends Component {
   constructor(props) {
     super(props);

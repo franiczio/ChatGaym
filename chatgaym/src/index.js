@@ -11,8 +11,8 @@ import chatReducer from "./Reducers/chatReducer";
 import playerReducer from "./Reducers/playerReducer";
 
 const allReducers = combineReducers({
-  chat: chatReducer,
-  player: playerReducer
+  player: playerReducer,
+  chat: chatReducer
 });
 
 const store = createStore(allReducers, {
