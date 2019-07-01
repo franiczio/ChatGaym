@@ -17,9 +17,9 @@ class UserList extends Component {
     this.forceUpdate();
   }
 
-  onShowInvitation() {
-    this.props.onShowInvitation();
-    this.forceUpdate();
+  onShowInvitation(event, player) {
+    this.props.onShowInvitation(player);
+    this.forceUpdateHandler();
   }
 
   onUserLogin() {
@@ -37,7 +37,12 @@ class UserList extends Component {
       <Fragment>
         <ul>
           {onlineUsers.map((li, i) => (
-            <li onMouseEnter={this.onShowInvitation} key={i}>
+            <li
+              onMouseEnter={e => {
+                this.onShowInvitation(e, li.nickName);
+              }}
+              key={i}
+            >
               {li.nickName}
               {li.isInvitationVisible ? <InvPlayer name="asd" /> : null}
             </li>
