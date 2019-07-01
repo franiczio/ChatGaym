@@ -3,7 +3,7 @@ class UserList extends Component {
   render() {
     return (
       <Fragment>
-        <p>TO JEST LISTA</p>
+        <p>TO JEST moja LISTA</p>
       </Fragment>
     );
   }
