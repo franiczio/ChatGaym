@@ -16,11 +16,14 @@ class Chat extends Component {
       event.target.value = "";
     }
   }
+  functionToTryEvents() {
+    console.log("Now its working");
+  }
 
   render() {
     return (
       <Fragment>
-        <h3>CHAT</h3>
+        <h3 onMouseEnter={this.functionToTryEvents}>CHAT</h3>
         <div>
           {this.props.chat.map((p, i) => (
             <p key={i}>{p}</p>
