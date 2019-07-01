@@ -19,8 +19,6 @@ export default function playerReducer(state = defaultPlayers, action) {
     }
 
     case SHOW_INVITATION: {
-      console.log(action.playerName);
-
       state.forEach(user => {
         if (user.nickName === action.playerName) {
           user.isInvitationVisible = true;
@@ -30,8 +28,6 @@ export default function playerReducer(state = defaultPlayers, action) {
     }
 
     case HIDE_INVITATION: {
-      console.log("action.playerName");
-
       state.forEach(user => {
         if (user.nickName === action.playerName) {
           user.isInvitationVisible = false;
