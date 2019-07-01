@@ -1,7 +1,7 @@
 import { SHOW_ACTIVE_PLAYERS } from "../Actions/playerActions";
 
 const defaultPlayers = [
-  { nickName: "Michal", isLogged: false },
+  { nickName: "Michal", isLogged: true },
   { nickName: "Pietrek", isLogged: true }
 ];
 export default function playerReducer(state = defaultPlayers, { type }) {
