@@ -1,6 +1,14 @@
+import Popup from "reactjs-popup";
+import React, { Component, Fragment } from "react";
+
 class InvPlayer extends Component {
   render() {
-    return <p>yo</p>;
+    return (
+      <Fragment>
+        <button>{this.props.name}</button>
+        <button>{this.props.name}</button>
+      </Fragment>
+    );
   }
 }
 
