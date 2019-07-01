@@ -1,5 +1,6 @@
 import { SHOW_ACTIVE_PLAYERS } from "../Actions/playerActions";
 import { SHOW_INVITATION } from "../Actions/invitationActions";
+import { HIDE_INVITATION } from "../Actions/invitationActions";
 
 const defaultPlayers = [
   { nickName: "Michal", isLogged: true, isInvitationVisible: false },
@@ -25,6 +26,18 @@ export default function playerReducer(state = defaultPlayers, action) {
           user.isInvitationVisible = true;
         }
       });
+      return state;
+    }
+
+    case HIDE_INVITATION: {
+      console.log("action.playerName");
+
+      state.forEach(user => {
+        if (user.nickName === action.playerName) {
+          user.isInvitationVisible = false;
+        }
+      });
+      return state;
     }
 
     default:

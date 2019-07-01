@@ -5,8 +5,9 @@ class InvPlayer extends Component {
   render() {
     return (
       <Fragment>
-        <button>{this.props.name}</button>
-        <button>{this.props.name}</button>
+        <button>CHAT</button>
+        <p> </p>
+        <button>INVIDE TO GAME</button>
       </Fragment>
     );
   }
