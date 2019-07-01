@@ -1,18 +1,19 @@
-import SHOW_ACTIVE_PLAYERS from "../Actions/playerActions";
+import { SHOW_ACTIVE_PLAYERS } from "../Actions/playerActions";
 
 const defaultPlayers = [
   { nickName: "Michal", isLogged: false },
   { nickName: "Pietrek", isLogged: true }
 ];
-export default function playerReducer(state = defaultPlayers, action) {
-  switch (action.type) {
+export default function playerReducer(state = defaultPlayers, { type }) {
+  switch (type) {
     case SHOW_ACTIVE_PLAYERS: {
-      state.map(player => {
-        if (!player.isLogged) {
-          state.pop(player);
+      const newState = [];
+      state.forEach(player => {
+        if (player.isLogged) {
+          newState.push(player);
         }
       });
-      return state;
+      return newState;
     }
     default:
       return state;
