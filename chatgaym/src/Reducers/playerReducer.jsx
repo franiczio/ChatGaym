@@ -3,8 +3,24 @@ import { SHOW_INVITATION } from "../Actions/invitationActions";
 import { HIDE_INVITATION } from "../Actions/invitationActions";
 
 const defaultPlayers = [
-  { nickName: "Michal", isLogged: true, isInvitationVisible: false },
-  { nickName: "Pietrek", isLogged: true, isInvitationVisible: false }
+  {
+    nickName: "Michal",
+    isLogged: true,
+    isInvitationVisible: false,
+    attack: 12,
+    defence: 3,
+    gold: 150,
+    actions: []
+  },
+  {
+    nickName: "Pietrek",
+    isLogged: true,
+    isInvitationVisible: false,
+    attack: 10,
+    defence: 4,
+    gold: 120,
+    actions: []
+  }
 ];
 export default function playerReducer(state = defaultPlayers, action) {
   switch (action.type) {

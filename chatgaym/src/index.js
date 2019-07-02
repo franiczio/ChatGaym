@@ -9,9 +9,11 @@ import { ReactReduxContent } from "react-redux";
 import { Provider } from "react-redux";
 import chatReducer from "./Reducers/chatReducer";
 import playerReducer from "./Reducers/playerReducer";
+import profileReducer from "./Reducers/profileReducer";
 
 const allReducers = combineReducers({
   player: playerReducer,
+  profile: profileReducer,
   chat: chatReducer
 });
 
