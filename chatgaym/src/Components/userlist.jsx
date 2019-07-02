@@ -38,7 +38,6 @@ class UserList extends Component {
 
   render() {
     let onlineUsers = this.props.player.filter(user => user.isLogged);
-    console.log(onlineUsers);
     return (
       <Fragment>
         <ul>
