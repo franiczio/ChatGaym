@@ -5,7 +5,7 @@ import NewWindow from "react-new-window";
 class InvPlayer extends Component {
   createTable = () => {
     console.log("działam");
-    window.open("http://localhost:3000/table", "Data", "height=250,width=250");
+    window.open("http://localhost:3000/table", "Data", "height=550,width=550");
     return (
       <NewWindow>
         <h1>Hi 👋</h1>
