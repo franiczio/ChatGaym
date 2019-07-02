@@ -13,8 +13,9 @@ export default function chatReducer(state = defaultState, action) {
   switch (action.type) {
     case SHOW_PROFILE: {
       if (state.isProfileVisible === false) {
-        console.log("FALSEEEE");
-        state.isInvitationVisible = true;
+        return { ...state, isProfileVisible: true };
+      } else {
+        return { ...state, isProfileVisible: false };
       }
     }
     default:
