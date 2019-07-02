@@ -1,3 +1,4 @@
+import { SHOW_PROFILE } from "../Actions/gameActions";
 const defaultState = {
   nickName: "Michal",
   isLogged: true,
@@ -5,8 +6,18 @@ const defaultState = {
   attack: 12,
   defence: 3,
   gold: 150,
-  actions: []
+  actions: [],
+  isProfileVisible: false
 };
 export default function chatReducer(state = defaultState, action) {
-  return state;
+  switch (action.type) {
+    case SHOW_PROFILE: {
+      if (state.isProfileVisible === false) {
+        console.log("FALSEEEE");
+        state.isInvitationVisible = true;
+      }
+    }
+    default:
+      return state;
+  }
 }
