@@ -15,6 +15,7 @@ class App extends Component {
         <h1>CHAT GAME</h1>
         <Chat />
         <UserList />
+        <button>SEE PROFILE</button>
       </div>
     );
   }
