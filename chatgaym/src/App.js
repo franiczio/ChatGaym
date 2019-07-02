@@ -1,27 +1,22 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Component } from "react";
-import Chat from "./Components/chat";
-import UserList from "./Components/userlist";
-import Profile from "./Components/profile";
+import { Component, Fragment } from "react";
 import { ReactReduxContext, connect } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { bindActionCreators } from "redux";
 import profile from "./Components/profile";
+import Game from "./MainComponents/game";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-class App extends Component {
-  render() {
-    return (
+function App() {
+  return (
+    <Router>
       <div>
-        <h1>CHAT GAME</h1>
-        <Chat />
-        <UserList />
-        <button>SEE PROFILE</button>
-        {true ? <Profile /> : null}
+        <Route path="/game" component={Game} />
       </div>
-    );
-  }
+    </Router>
+  );
 }
 const mapStateToProps = state => {
   return state;
