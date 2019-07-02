@@ -7,6 +7,7 @@ import { createStore, combineReducers } from "redux";
 import { bindActionCreators } from "redux";
 import profile from "./Components/profile";
 import Game from "./MainComponents/game";
+import Table from "./MainComponents/table";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Router>
       <div>
         <Route path="/game" component={Game} />
+        <Route path="/table" component={Table} />
       </div>
     </Router>
   );
