@@ -22,7 +22,9 @@ class Game extends Component {
         <h1>CHAT GAME</h1>
         <Chat />
         <UserList />
-        <button onClick={this.onShowProfile}>SEE PROFILE</button>
+        <button onClick={this.onShowProfile}>
+          {this.props.profile.isProfileVisible ? "HIDE PROFILE" : "SEE PROFILE"}
+        </button>
         {this.props.profile.isProfileVisible ? <Profile /> : null}
       </Fragment>
     );

@@ -13,9 +13,15 @@ export default function chatReducer(state = defaultState, action) {
   switch (action.type) {
     case SHOW_PROFILE: {
       if (state.isProfileVisible === false) {
-        return { ...state, isProfileVisible: true };
+        return {
+          ...state,
+          isProfileVisible: true
+        };
       } else {
-        return { ...state, isProfileVisible: false };
+        return {
+          ...state,
+          isProfileVisible: false
+        };
       }
     }
     default:
