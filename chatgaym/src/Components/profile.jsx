@@ -4,10 +4,21 @@ class Profile extends Component {
   render() {
     return (
       <Fragment>
-        <p>yo</p>
+        <p>Nick: {this.props.profile.nickName}</p>
+        <p>Gold: {this.props.profile.gold}</p>
+        <p>Attack: {this.props.profile.attack}</p>
+        <p>Deffence: {this.props.profile.defence}</p>
       </Fragment>
     );
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return state;
+};
+const mapActionsToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Profile);

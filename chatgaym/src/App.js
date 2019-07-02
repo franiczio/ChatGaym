@@ -4,9 +4,11 @@ import "./App.css";
 import { Component } from "react";
 import Chat from "./Components/chat";
 import UserList from "./Components/userlist";
+import Profile from "./Components/profile";
 import { ReactReduxContext, connect } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { bindActionCreators } from "redux";
+import profile from "./Components/profile";
 
 class App extends Component {
   render() {
@@ -16,6 +18,7 @@ class App extends Component {
         <Chat />
         <UserList />
         <button>SEE PROFILE</button>
+        {true ? <Profile /> : null}
       </div>
     );
   }
