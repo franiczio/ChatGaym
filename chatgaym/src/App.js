@@ -9,11 +9,13 @@ import profile from "./Components/profile";
 import Game from "./MainComponents/game";
 import Table from "./MainComponents/table";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import LoginSite from "./MainComponents/loginSite";
 
 function App() {
   return (
     <Router>
       <div>
+        <Route exact path="/" component={LoginSite} />
         <Route path="/game" component={Game} />
         <Route path="/table" component={Table} />
       </div>
