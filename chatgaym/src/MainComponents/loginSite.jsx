@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 
 class LoginSite extends Component {
   redirectToSignInSite = () => {
-    window.open("http://localhost:3000/signIn", "Data", "height=550,width=550");
+    this.props.history.push("/signIn");
+    // window.open("http://localhost:3000/signIn", "Data", "height=550,width=550");
   };
   render() {
     return (

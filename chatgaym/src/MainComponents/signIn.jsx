@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 
 class SignIn extends Component {
   closeWindow = () => {
-    window.close();
+    this.props.history.push("/");
   };
   render() {
     return (
       <Fragment>
-        <button onClick={this.closeWindow}>Main menu</button>
+        <button onClick={this.closeWindow}>Back to logIn menu</button>
         <form>
           Login:
           <br />

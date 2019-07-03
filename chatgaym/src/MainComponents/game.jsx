@@ -21,7 +21,7 @@ class Game extends Component {
       <Fragment>
         <h1>CHAT GAME</h1>
         <Chat />
-        <UserList />
+        <UserList history={this.props.history} />
         <button onClick={this.onShowProfile}>
           {this.props.profile.isProfileVisible ? "HIDE PROFILE" : "SEE PROFILE"}
         </button>

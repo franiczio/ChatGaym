@@ -52,7 +52,9 @@ class UserList extends Component {
               key={i}
             >
               {li.nickName}
-              {li.isInvitationVisible ? <InvPlayer /> : null}
+              {li.isInvitationVisible ? (
+                <InvPlayer history={this.props.history} />
+              ) : null}
             </li>
           ))}
         </ul>
