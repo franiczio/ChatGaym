@@ -1,5 +1,8 @@
 import { SHOW_ACTIVE_PLAYERS } from "../Actions/playerActions";
-import { SHOW_INVITATION } from "../Actions/invitationActions";
+import {
+  SHOW_INVITATION,
+  ENTER_PRIVATE_CHAT
+} from "../Actions/invitationActions";
 import { HIDE_INVITATION } from "../Actions/invitationActions";
 
 const defaultPlayers = [
@@ -7,6 +10,7 @@ const defaultPlayers = [
     nickName: "Michal",
     isLogged: true,
     isInvitationVisible: false,
+    isPrivatChatOpen: false,
     attack: 12,
     defence: 3,
     gold: 150,
@@ -16,6 +20,7 @@ const defaultPlayers = [
     nickName: "Pietrek",
     isLogged: true,
     isInvitationVisible: false,
+    isPrivatChatOpen: false,
     attack: 10,
     defence: 4,
     gold: 120,
@@ -47,6 +52,19 @@ export default function playerReducer(state = defaultPlayers, action) {
       state.forEach(user => {
         if (user.nickName === action.playerName) {
           user.isInvitationVisible = false;
+        }
+      });
+      return state;
+    }
+
+    case ENTER_PRIVATE_CHAT: {
+      state.forEach(user => {
+        if (user.nickName === action.playerName) {
+          if (user.isPrivatChatOpen === false) {
+            user.isPrivatChatOpen = true;
+          } else {
+            user.isPrivatChatOpen = false;
+          }
         }
       });
       return state;

@@ -2,14 +2,18 @@ import React, { Component, Fragment } from "react";
 import { ReactReduxContext, connect } from "react-redux";
 import updateChat from "../Actions/chatActions";
 
-// import updateChatContent from "./Actions/chat-Actions";
-// import chatReducer from "./Reducers/chat-reducer";
-
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   }
+
+  forceUpdateHandler() {
+    this.forceUpdate();
+    console.log("forsłem");
+  }
+
   onUpdateChat(event) {
     if (event.key === "Enter") {
       this.props.onUpdateChat(event.target.value);

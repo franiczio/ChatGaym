@@ -10,7 +10,7 @@ class Table extends Component {
       <Fragment>
         <h1>TABLE</h1>
         <Chat />
-        <button onClick={this.backToMain}>BACK TO MAIN CHAT</button>
+        <button onClick={this.backToMain}>EXIT GAME</button>
       </Fragment>
     );
   }
