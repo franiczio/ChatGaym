@@ -32,6 +32,7 @@ export default function playerReducer(state = defaultPlayers, action) {
     case SHOW_ACTIVE_PLAYERS: {
       const newState = [];
       state.forEach(player => {
+        console.log(player.nickName);
         if (player.isLogged) {
           newState.push(player);
         }

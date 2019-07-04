@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { ReactReduxContext, connect } from "react-redux";
-import updateChat from "../Actions/chatActions";
-
+import * as chatActions from "../Actions/chatActions";
+const MAIN_CHAT = 0;
 class Chat extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +16,9 @@ class Chat extends Component {
 
   onUpdateChat(event) {
     if (event.key === "Enter") {
-      this.props.onUpdateChat(event.target.value);
+      this.props.onUpdateChat(event.target.value, this.props.chatId);
       event.target.value = "";
+      this.forceUpdate();
     }
   }
   functionToTryEvents() {
@@ -29,7 +30,7 @@ class Chat extends Component {
       <Fragment>
         <h3 onMouseEnter={this.functionToTryEvents}>CHAT</h3>
         <div>
-          {this.props.chat.map((p, i) => (
+          {this.props.chat[this.props.chatId].chaty.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
@@ -45,7 +46,7 @@ const mapStateToProps = state => {
   return state;
 };
 const mapActionsToProps = {
-  onUpdateChat: updateChat
+  onUpdateChat: chatActions.updateChat
 };
 export default connect(
   mapStateToProps,

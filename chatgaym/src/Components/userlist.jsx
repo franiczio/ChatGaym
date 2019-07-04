@@ -56,7 +56,7 @@ class UserList extends Component {
               {li.isInvitationVisible ? (
                 <InvPlayer currentPlayer={li} history={this.props.history} />
               ) : null}
-              {li.isPrivatChatOpen ? <Chat /> : null}
+              {li.isPrivatChatOpen ? <Chat chatId={1} /> : null}
             </li>
           ))}
         </ul>
