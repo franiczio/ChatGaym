@@ -1,10 +1,11 @@
 export const UPDATE_CHAT = "chat:updatechat";
 
-export default function updateChat(newMessage) {
+export default function updateChat(newMessage, chatId) {
   return {
     type: UPDATE_CHAT,
     payload: {
-      message: newMessage
+      message: newMessage,
+      id: chatId
     }
   };
 }

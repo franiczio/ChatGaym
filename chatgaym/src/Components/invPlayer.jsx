@@ -24,6 +24,7 @@ class InvPlayer extends Component {
     return (
       <Fragment>
         <button
+          className="button"
           onClick={() => {
             this.onEnterPrivateChat(this.props.currentPlayer);
           }}
