@@ -30,7 +30,7 @@ class Chat extends Component {
       <Fragment>
         <h3 onMouseEnter={this.functionToTryEvents}>CHAT</h3>
         <div>
-          {this.props.chat[this.props.chatId].chaty.map((p, i) => (
+          {this.props.chat[this.props.chatId].chat.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
