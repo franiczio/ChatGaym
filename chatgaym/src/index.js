@@ -9,15 +9,15 @@ import { ReactReduxContent } from "react-redux";
 import { Provider } from "react-redux";
 import chatReducer from "./Reducers/chatReducer";
 import playerReducer from "./Reducers/playerReducer";
+import profileReducer from "./Reducers/profileReducer";
 
 const allReducers = combineReducers({
   player: playerReducer,
+  profile: profileReducer,
   chat: chatReducer
 });
 
-const store = createStore(allReducers, {
-  chat: ["Hello dear user"]
-});
+const store = createStore(allReducers);
 
 ReactDOM.render(
   <Provider store={store}>
