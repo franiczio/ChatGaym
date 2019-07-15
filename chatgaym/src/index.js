@@ -17,9 +17,7 @@ const allReducers = combineReducers({
   chat: chatReducer
 });
 
-const store = createStore(allReducers, {
-  chat: ["Hello dear user"]
-});
+const store = createStore(allReducers);
 
 ReactDOM.render(
   <Provider store={store}>

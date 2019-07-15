@@ -6,6 +6,7 @@ import Chat from "../Components/chat";
 import UserList from "../Components/userlist";
 import Profile from "../Components/profile";
 
+const MAIN_CHAT = 0;
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +21,8 @@ class Game extends Component {
     return (
       <Fragment>
         <h1>CHAT GAME</h1>
-        <Chat />
-        <UserList />
+        <Chat chatId={MAIN_CHAT} />
+        <UserList history={this.props.history} />
         <button onClick={this.onShowProfile}>
           {this.props.profile.isProfileVisible ? "HIDE PROFILE" : "SEE PROFILE"}
         </button>

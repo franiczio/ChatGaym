@@ -1,22 +1,36 @@
 import Popup from "reactjs-popup";
 import React, { Component, Fragment } from "react";
-import NewWindow from "react-new-window";
+import { ReactReduxContext, connect } from "react-redux";
+import * as invitationModule from "../Actions/invitationActions";
 
 class InvPlayer extends Component {
+  constructor(props) {
+    super(props);
+    this.onEnterPrivateChat = this.onEnterPrivateChat.bind(this);
+  }
+
   createTable = () => {
     console.log("działam");
-    window.open("http://localhost:3000/table", "Data", "height=250,width=250");
-    return (
-      <NewWindow>
-        <h1>Hi 👋</h1>
-      </NewWindow>
-    );
+    this.props.history.push("/table");
   };
+
+  onEnterPrivateChat(player) {
+    console.log(player.isPrivatChatOpen);
+    this.props.onEnterPrivateChat(player.nickName);
+    this.forceUpdate();
+  }
 
   render() {
     return (
       <Fragment>
-        <button>CHAT</button>
+        <button
+          className="button"
+          onClick={() => {
+            this.onEnterPrivateChat(this.props.currentPlayer);
+          }}
+        >
+          CHAT
+        </button>
         <p> </p>
         <button onClick={this.createTable}>INVIDE TO GAME</button>
       </Fragment>
@@ -24,4 +38,14 @@ class InvPlayer extends Component {
   }
 }
 
-export default InvPlayer;
+const mapStateToProps = state => {
+  return state;
+};
+const mapActionsToProps = {
+  onEnterPrivateChat: invitationModule.enterPrivateChat
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(InvPlayer);

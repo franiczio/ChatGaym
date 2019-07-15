@@ -9,13 +9,17 @@ import profile from "./Components/profile";
 import Game from "./MainComponents/game";
 import Table from "./MainComponents/table";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import LoginSite from "./MainComponents/loginSite";
+import SignIn from "./MainComponents/signIn";
 
 function App() {
   return (
     <Router>
       <div>
+        <Route exact path="/" component={LoginSite} />
         <Route path="/game" component={Game} />
         <Route path="/table" component={Table} />
+        <Route path="/signIn" component={SignIn} />
       </div>
     </Router>
   );

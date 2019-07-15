@@ -3,6 +3,7 @@ import { ReactReduxContext, connect } from "react-redux";
 import userLogin from "../Actions/playerActions";
 import InvPlayer from "../Components/invPlayer";
 import * as invitationModule from "../Actions/invitationActions";
+import Chat from "../Components/chat";
 // import PropTypes from "prop-types";
 
 class UserList extends Component {
@@ -52,7 +53,10 @@ class UserList extends Component {
               key={i}
             >
               {li.nickName}
-              {li.isInvitationVisible ? <InvPlayer /> : null}
+              {li.isInvitationVisible ? (
+                <InvPlayer currentPlayer={li} history={this.props.history} />
+              ) : null}
+              {li.isPrivatChatOpen ? <Chat chatId={li.chatId} /> : null}
             </li>
           ))}
         </ul>
