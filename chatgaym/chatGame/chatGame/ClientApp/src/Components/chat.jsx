@@ -8,27 +8,30 @@ class Chat extends Component {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-    this.fetchProducts = this.fetchProducts.bind(this);
+//    this.fetchProducts = this.fetchProducts.bind(this);
   }
 
-    fetchProducts() {
-        fetch('https://localhost:44320/api/SignIn').then((response) => response.json())
-            .then((responseJSON) => {
-                this.props.onUpdateChat(responseJSON, this.props.chatId);
-            });
-    }
+//    fetchProducts() {
+//        fetch('https://localhost:44320/api/SignIn').then((response) => response.json())
+//            .then((responseJSON) => {
+//                this.props.onUpdateChat(responseJSON, this.props.chatId);
+//            });
+//    }
 
     async  useAxios() {
         const axios = require('axios');
 
-//        axios.get('https://localhost:44320/api/SignIn').then(resp => {
-//
-////            console.log(resp);
-//        });
+
 
         let res = await axios.post('https://localhost:44320/api/SignIn').then(resp => {
             console.log(resp);
         });
+    }
+
+    async getListOfMessagesFromServer() {
+        const axios = require('axios');
+        let res = await axios.get('https://localhost:44320/api/SignIn/sendData').then(
+            (resp) => { this.props.onUpdateChat(resp.data, this.props.chatId);});
     }
 
 
@@ -44,9 +47,9 @@ class Chat extends Component {
       this.forceUpdate();
       }
       if (event.key === "a") {
+          this.props.onUpdateChat("dupa", this.props.chatId);
           console.log("klikłem spacje");
-          this.fetchProducts();
-          this.useAxios();
+          this.getListOfMessagesFromServer();
           this.forceUpdate();
 
       }
@@ -69,7 +72,7 @@ class Chat extends Component {
   render() {
     return (
       <Fragment>
-        <h3 onMouseEnter={this.fetchProducts}>CHAT</h3>
+        <h3>CHAT</h3>
         <div>
           {this.props.chat[this.props.chatId].chat.map((p, i) => (
             <p key={i}>{p}</p>
