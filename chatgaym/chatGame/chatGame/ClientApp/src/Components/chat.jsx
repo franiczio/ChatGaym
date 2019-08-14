@@ -31,7 +31,8 @@ class Chat extends Component {
     async getListOfMessagesFromServer() {
         const axios = require('axios');
         let res = await axios.get('https://localhost:44320/api/SignIn/sendData').then(
-            (resp) => { this.props.onUpdateChat(resp.data, this.props.chatId);});
+            (resp) => { this.props.onUpdateChat(resp.data, this.props.chatId); });
+        this.forceUpdate();
     }
 
 
@@ -47,7 +48,6 @@ class Chat extends Component {
       this.forceUpdate();
       }
       if (event.key === "a") {
-          this.props.onUpdateChat("dupa", this.props.chatId);
           console.log("klikłem spacje");
           this.getListOfMessagesFromServer();
           this.forceUpdate();

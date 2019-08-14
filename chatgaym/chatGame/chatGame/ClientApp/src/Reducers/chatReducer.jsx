@@ -11,8 +11,10 @@ export default function chatReducer(state = defaultChats, { type, payload }) {
     case UPDATE_CHAT: {
       const chatContent = [];
       state.forEach(chats => {
-        if (chats.id === payload.id) {
-          chats.chat = [...chats.chat, payload.message];
+          if (chats.id === payload.id) {
+              for (var i = 0; i < payload.message.length; i++){
+              chats.chat = [...chats.chat, payload.message[i]];
+              }
         }
       });
       return state;

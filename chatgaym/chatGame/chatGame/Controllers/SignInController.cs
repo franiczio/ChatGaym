@@ -20,9 +20,9 @@ namespace chatGame.Controllers
         [HttpGet("sendData")]
         public ActionResult<List<String>> SendDatabaseContent()
         {
-//            dbCon.DatabaseName = "chat_base";
-//            dbCon.Connect();
-            myStringList.Add(getDBContent());
+            dbCon.DatabaseName = "chat_base";
+            dbCon.Connect();
+            myStringList=getDBContent();
             return Ok(myStringList);
         }
 
@@ -66,8 +66,9 @@ namespace chatGame.Controllers
             return Ok("postResponse");
         }
 
-        public string getDBContent()
+        public List<string> getDBContent()
         {
+            List<string> newMessages = new List<string>();
             string result = string.Empty;
             string query = "SELECT Content FROM messages";
             var cmd = new MySqlCommand(query, dbCon.Connection);
@@ -76,11 +77,11 @@ namespace chatGame.Controllers
             {
                 
                 string someStringFromColumnZero = reader.GetString(0);
-                result += someStringFromColumnZero;
+                newMessages.Add(someStringFromColumnZero);
                 
             }
             reader.Close();
-            return result;
+            return newMessages;
         }
     }
 }
