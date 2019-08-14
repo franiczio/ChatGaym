@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import AppWrapper from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore, combineReducers } from "redux";
+import { applyMiddleware,createStore, combineReducers } from "redux";
 import { ReactReduxContent } from "react-redux";
 import { Provider } from "react-redux";
 import chatReducer from "./Reducers/chatReducer";
 import playerReducer from "./Reducers/playerReducer";
 import profileReducer from "./Reducers/profileReducer";
+import thunk from 'redux-thunk';
+
+const middlewares = [thunk];
 
 const allReducers = combineReducers({
   player: playerReducer,
@@ -17,7 +20,7 @@ const allReducers = combineReducers({
   chat: chatReducer
 });
 
-const store = createStore(allReducers);
+const store = createStore(allReducers, applyMiddleware(...middlewares));
 
 ReactDOM.render(
   <Provider store={store}>

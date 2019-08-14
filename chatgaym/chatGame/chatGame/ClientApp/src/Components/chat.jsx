@@ -1,15 +1,38 @@
 import React, { Component, Fragment } from "react";
 import { ReactReduxContext, connect } from "react-redux";
 import * as chatActions from "../Actions/chatActions";
+import axios from 'axios';
 const MAIN_CHAT = 0;
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    this.fetchProducts = this.fetchProducts.bind(this);
   }
 
-  forceUpdateHandler() {
+    fetchProducts() {
+        fetch('https://localhost:44320/api/SignIn').then((response) => response.json())
+            .then((responseJSON) => {
+                this.props.onUpdateChat(responseJSON, this.props.chatId);
+            });
+    }
+
+    async  useAxios() {
+        const axios = require('axios');
+
+//        axios.get('https://localhost:44320/api/SignIn').then(resp => {
+//
+////            console.log(resp);
+//        });
+
+        let res = await axios.post('https://localhost:44320/api/SignIn').then(resp => {
+            console.log(resp);
+        });
+    }
+
+
+    forceUpdateHandler() {
     this.forceUpdate();
     console.log("forsłem");
   }
@@ -17,25 +40,43 @@ class Chat extends Component {
   onUpdateChat(event) {
     if (event.key === "Enter") {
       this.props.onUpdateChat(event.target.value, this.props.chatId);
-      event.target.value = "";
+        event.target.value = "";
       this.forceUpdate();
-    }
+      }
+      if (event.key === "a") {
+          console.log("klikłem spacje");
+          this.fetchProducts();
+          this.useAxios();
+          this.forceUpdate();
+
+      }
   }
   functionToTryEvents() {
-    console.log("Now its working");
-  }
+     // console.log("Now its working");
+      console.log("da");
+    }
+  
+
+    componentDidMount() {
+        setInterval(this.useAxios
+            , 5000);
+        console.log("DU...");
+
+      //const a = this.fetchProducts();
+      //console.log(a);
+    }
 
   render() {
     return (
       <Fragment>
-        <h3 onMouseEnter={this.functionToTryEvents}>CHAT</h3>
+        <h3 onMouseEnter={this.fetchProducts}>CHAT</h3>
         <div>
           {this.props.chat[this.props.chatId].chat.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
         <form>
-          <textarea type="text" onKeyDown={this.onUpdateChat} />
+          <textarea type="text" onKeyDown={this.onUpdateChat} /> //return chat content with onUpdateChat method.
         </form>
       </Fragment>
     );
@@ -52,3 +93,4 @@ export default connect(
   mapStateToProps,
   mapActionsToProps
 )(Chat);
+
