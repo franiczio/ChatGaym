@@ -23,6 +23,7 @@ namespace chatGame.Controllers
             dbCon.DatabaseName = "chat_base";
             dbCon.Connect();
             myStringList=getDBContent();
+            AddMessageToDB("add");
             return Ok(myStringList);
         }
 
@@ -32,31 +33,8 @@ namespace chatGame.Controllers
             dbCon.DatabaseName = "chat_base";
             dbCon.Connect();
 
-
-            //            string querry = "INSERT INTO users(nick,password) VALUES(?nick, ?password);";
-            //            using (MySqlCommand command = new MySqlCommand(querry, dbCon.Connection))
-            //            {
-            //                command.Parameters.Add("?nick", MySqlDbType.VarChar).Value = "kuba";
-            //                command.Parameters.Add("?password", MySqlDbType.VarChar).Value = "dyja";
-            //                command.ExecuteNonQuery();
-            //                dbCon.Close();
-            //            }
-
-//            DateTime data = DateTime.Now;
-//            Console.WriteLine("responseTest");
-//            string tryy = "{\"invoked\": \"asd\"}";
-//            myStringList.Add(getDBContent());
-//            myStringList.Add("ab");
-//            myStringList.Add("cd");
-//            myStringList.Add("ef");
-//            myStringList.Add("gh");
-//            myStringList.Add("ij");
-//            myStringList.Add(new String("kl"));
-//            myStringList.Add(data.ToString());
-//            myStringList.Add("----");
-//            myStringList.Add(myStringList.Count.ToString());
             return Ok();
-            //return Ok();
+          
         }
 
         [HttpPost]
@@ -82,6 +60,17 @@ namespace chatGame.Controllers
             }
             reader.Close();
             return newMessages;
+        }
+
+        public void AddMessageToDB(string Message)
+        {
+            MySqlCommand newCommand = dbCon.Connection.CreateCommand();
+            newCommand.CommandText = "INSERT INTO messages VALUES (@message, @firstId, @secondId)";
+            newCommand.Parameters.AddWithValue("@message", "hello1");
+            newCommand.Parameters.AddWithValue("@firstId", 0);
+            newCommand.Parameters.AddWithValue("@secondId", 0);
+            newCommand.ExecuteNonQuery();
+            
         }
     }
 }
