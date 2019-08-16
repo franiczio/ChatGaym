@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using chatGame.DB;
@@ -23,8 +24,15 @@ namespace chatGame.Controllers
             dbCon.DatabaseName = "chat_base";
             dbCon.Connect();
             myStringList=getDBContent();
-            AddMessageToDB("add");
             return Ok(myStringList);
+        }
+
+        [HttpPost("getData")]
+        public async void SendNewMessageToDataBase()
+        {
+            var reader = new StreamReader(Request.Body);
+            var body = reader.ReadToEnd();
+            AddMessageToDB(body);
         }
 
         [HttpGet]
@@ -62,11 +70,11 @@ namespace chatGame.Controllers
             return newMessages;
         }
 
-        public void AddMessageToDB(string Message)
+        public void AddMessageToDB(string message)
         {
             MySqlCommand newCommand = dbCon.Connection.CreateCommand();
             newCommand.CommandText = "INSERT INTO messages VALUES (@message, @firstId, @secondId)";
-            newCommand.Parameters.AddWithValue("@message", "hello1");
+            newCommand.Parameters.AddWithValue("@message", message);
             newCommand.Parameters.AddWithValue("@firstId", 0);
             newCommand.Parameters.AddWithValue("@secondId", 0);
             newCommand.ExecuteNonQuery();

@@ -8,6 +8,7 @@ class Chat extends Component {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    this.sendMessageToDB = this.sendMessageToDB.bind(this);
 //    this.fetchProducts = this.fetchProducts.bind(this);
   }
 
@@ -35,6 +36,10 @@ class Chat extends Component {
         this.forceUpdate();
     }
 
+    async sendMessageToDB(message) {
+        const axios = require('axios');
+        let res = await axios.post('https://localhost:44320/api/SignIn/getData',message);
+    }
 
     forceUpdateHandler() {
     this.forceUpdate();
@@ -43,9 +48,10 @@ class Chat extends Component {
 
   onUpdateChat(event) {
     if (event.key === "Enter") {
-      this.props.onUpdateChat(event.target.value, this.props.chatId);
+        this.props.onUpdateChat(event.target.value, this.props.chatId);
+        this.sendMessageToDB(event.target.value);
         event.target.value = "";
-      this.forceUpdate();
+        this.forceUpdate();
       }
       if (event.key === "a") {
           console.log("klikłem spacje");
