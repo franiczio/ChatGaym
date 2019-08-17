@@ -9,15 +9,15 @@ namespace chatGame.DB
 {
     public class DBConnection
     {
-        public DBConnection()
-        {
-        }
+//        public DBConnection()
+//        {
+//        }
         private string databaseName = string.Empty;
-        public string DatabaseName
-        {
-            get { return databaseName; }
-            set { databaseName = value; }
-        }
+//        public string DatabaseName
+//        {
+//            get { return databaseName; }
+//            set { databaseName = value; }
+//        }
         
         public string Password { get; set; }
 
@@ -27,12 +27,11 @@ namespace chatGame.DB
             get { return connection; }
         }
 
-        private static DBConnection instance = null;
-        public static DBConnection Instance()
+        private DBConnection instance = null;
+
+        public DBConnection(string databaseName)
         {
-            if (instance == null)
-                instance = new DBConnection();
-            return instance;
+            this.databaseName = databaseName;
         }
 
         public void Connect()

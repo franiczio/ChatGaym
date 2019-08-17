@@ -8,7 +8,8 @@ class Chat extends Component {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-    this.sendMessageToDB = this.sendMessageToDB.bind(this);
+      this.sendMessageToDB = this.sendMessageToDB.bind(this);
+      this.getListOfMessagesFromServer = this.getListOfMessagesFromServer.bind(this);
 //    this.fetchProducts = this.fetchProducts.bind(this);
   }
 
@@ -29,13 +30,17 @@ class Chat extends Component {
         });
     }
 
-    async getListOfMessagesFromServer() {
+     async getListOfMessagesFromServer() {
         const axios = require('axios');
         let res = await axios.get('https://localhost:44320/api/SignIn/sendData').then(
-            (resp) => { this.props.onUpdateChat(resp.data, this.props.chatId); });
-        this.forceUpdate();
+            (resp) => { let dbLength = resp.data.length-1;
+                console.log(resp.data[dbLength]);
+                this.props.onUpdateChat(resp.data[dbLength], this.props.chatId);
+                this.forceUpdateHandler();
+            });
+//        this.forceUpdate();
     }
-
+//    this.props.onUpdateChat(resp.data[dbLength], this.props.chatId);
     async sendMessageToDB(message) {
         const axios = require('axios');
         let res = await axios.post('https://localhost:44320/api/SignIn/getData',message);
@@ -48,17 +53,18 @@ class Chat extends Component {
 
   onUpdateChat(event) {
     if (event.key === "Enter") {
-        this.props.onUpdateChat(event.target.value, this.props.chatId);
+//        this.props.onUpdateChat(event.target.value, this.props.chatId);
         this.sendMessageToDB(event.target.value);
+        this.getListOfMessagesFromServer();
         event.target.value = "";
         this.forceUpdate();
       }
-      if (event.key === "a") {
-          console.log("klikłem spacje");
-          this.getListOfMessagesFromServer();
-          this.forceUpdate();
-
-      }
+//      if (event.key === "a") {
+//          console.log("klikłem spacje");
+//          this.getListOfMessagesFromServer();
+//          this.forceUpdate();
+//
+//      }
   }
   functionToTryEvents() {
      // console.log("Now its working");
@@ -67,7 +73,7 @@ class Chat extends Component {
   
 
     componentDidMount() {
-        setInterval(this.useAxios
+        setInterval(this.getListOfMessagesFromServer
             , 5000);
         console.log("DU...");
 
