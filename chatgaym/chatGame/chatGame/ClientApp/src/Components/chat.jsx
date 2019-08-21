@@ -47,6 +47,7 @@ class Chat extends Component {
         let messageJSON = {}
         messageJSON[0] = message;
         messageJSON[1] = messageTime;
+        messageJSON[2] = this.props.chatId;
         let res = await axios.post('https://localhost:44320/api/SignIn/getData',JSON.stringify(messageJSON));
     }
 
