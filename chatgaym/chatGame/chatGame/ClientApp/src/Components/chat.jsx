@@ -43,7 +43,11 @@ class Chat extends Component {
 //    this.props.onUpdateChat(resp.data[dbLength], this.props.chatId);
     async sendMessageToDB(message) {
         const axios = require('axios');
-        let res = await axios.post('https://localhost:44320/api/SignIn/getData',message);
+        let messageTime = Date.now();
+        let messageJSON = {}
+        messageJSON[0] = message;
+        messageJSON[1] = messageTime;
+        let res = await axios.post('https://localhost:44320/api/SignIn/getData',JSON.stringify(messageJSON));
     }
 
     forceUpdateHandler() {
