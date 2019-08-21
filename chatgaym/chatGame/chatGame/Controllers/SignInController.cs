@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Math;
 
 namespace chatGame.Controllers
 {
@@ -37,10 +38,12 @@ namespace chatGame.Controllers
             var bodyDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
             var bodyKeys = bodyDictionary.Keys.ToArray();
             var contentKey = bodyKeys[0];
+            var timeKey = bodyKeys[1];
             var idKey = bodyKeys[2];
             string content = bodyDictionary[contentKey];
             int id = Int32.Parse(bodyDictionary[idKey]);
-            AddMessageToDB(content,id);
+            long time = long.Parse(bodyDictionary[timeKey]);
+            AddMessageToDB(content,id,time);
         }
 
         [HttpGet]
@@ -89,17 +92,19 @@ namespace chatGame.Controllers
             return newMessages;
         }
 
-        public void AddMessageToDB(string message,int id)
+        public void AddMessageToDB(string message,int id, long time)
         {
             //dbConInsert.DatabaseName = "chat_base";
             dbConInsert.Connect();
 
             MySqlCommand newCommand = new MySqlCommand();
             newCommand = dbConInsert.Connection.CreateCommand();
-            newCommand.CommandText = "INSERT INTO messages VALUES (@message, @firstId, @secondId)";
+            newCommand.CommandText = "INSERT INTO messages VALUES (@message, @firstId, @secondId, @time)";
             newCommand.Parameters.AddWithValue("@message", message);
             newCommand.Parameters.AddWithValue("@firstId", id);
             newCommand.Parameters.AddWithValue("@secondId", 0);
+            newCommand.Parameters.AddWithValue("@time", time);
+
             newCommand.ExecuteNonQuery();
             dbConInsert.Close();
             
