@@ -35,9 +35,12 @@ namespace chatGame.Controllers
             var reader = new StreamReader(Request.Body);
             var body = reader.ReadToEnd();
             var bodyDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
-            var contentKey = bodyDictionary.Keys.First();
+            var bodyKeys = bodyDictionary.Keys.ToArray();
+            var contentKey = bodyKeys[0];
+            var idKey = bodyKeys[2];
             string content = bodyDictionary[contentKey];
-            AddMessageToDB(content);
+            int id = Int32.Parse(bodyDictionary[idKey]);
+            AddMessageToDB(content,id);
         }
 
         [HttpGet]
@@ -86,7 +89,7 @@ namespace chatGame.Controllers
             return newMessages;
         }
 
-        public void AddMessageToDB(string message)
+        public void AddMessageToDB(string message,int id)
         {
             //dbConInsert.DatabaseName = "chat_base";
             dbConInsert.Connect();
@@ -95,7 +98,7 @@ namespace chatGame.Controllers
             newCommand = dbConInsert.Connection.CreateCommand();
             newCommand.CommandText = "INSERT INTO messages VALUES (@message, @firstId, @secondId)";
             newCommand.Parameters.AddWithValue("@message", message);
-            newCommand.Parameters.AddWithValue("@firstId", 0);
+            newCommand.Parameters.AddWithValue("@firstId", id);
             newCommand.Parameters.AddWithValue("@secondId", 0);
             newCommand.ExecuteNonQuery();
             dbConInsert.Close();
