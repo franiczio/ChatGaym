@@ -44,11 +44,13 @@ class Chat extends Component {
     async sendMessageToDB(message) {
         const axios = require('axios');
         let messageTime = Date.now();
-        let messageJSON = {}
-        messageJSON[0] = message;
-        messageJSON[1] = messageTime;
-        messageJSON[2] = this.props.chatId;
-        let res = await axios.post('https://localhost:44320/api/SignIn/getData',JSON.stringify(messageJSON));
+        let chatId = this.props.chatId;
+        var body = {}
+        body["content"] = message;
+        body["time"] = messageTime;
+        body["id"] = chatId;
+        console.log(body);
+        let res = await axios.post('https://localhost:44320/api/SignIn/getData', JSON.stringify(body));
     }
 
     forceUpdateHandler() {
@@ -79,7 +81,7 @@ class Chat extends Component {
 
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
-            , 5000);
+            , 15000);
         console.log("DU...");
 
       //const a = this.fetchProducts();

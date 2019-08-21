@@ -7,6 +7,7 @@ using chatGame.DB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 
 namespace chatGame.Controllers
 {
@@ -33,7 +34,10 @@ namespace chatGame.Controllers
         {
             var reader = new StreamReader(Request.Body);
             var body = reader.ReadToEnd();
-            AddMessageToDB(body);
+            var bodyDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+            var contentKey = bodyDictionary.Keys.First();
+            string content = bodyDictionary[contentKey];
+            AddMessageToDB(content);
         }
 
         [HttpGet]
