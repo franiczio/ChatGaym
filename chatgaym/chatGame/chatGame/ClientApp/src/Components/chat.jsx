@@ -35,7 +35,7 @@ class Chat extends Component {
         let res = await axios.get('https://localhost:44320/api/SignIn/sendData').then(
             (resp) => { let dbLength = resp.data.length-1;
                 console.log(resp.data[dbLength]);
-                this.props.onUpdateChat(resp.data[dbLength], this.props.chatId);
+                this.props.onUpdateChat(resp.data, this.props.chatId);
                 this.forceUpdateHandler();
             });
 //        this.forceUpdate();
