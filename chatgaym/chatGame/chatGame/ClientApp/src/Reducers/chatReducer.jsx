@@ -1,9 +1,9 @@
 import { UPDATE_CHAT } from "../Actions/chatActions";
 import chat from "../Components/chat";
 const defaultChats = [
-  { chat: ["WELCOME ON MAIN CHAT"], id: 0 },
-  { chat: [], id: 1 },
-  { chat: [], id: 2 }
+  { chat: ["WELCOME ON MAIN CHAT"], id: 0, lastMessage: 0 },
+    { chat: [], id: 1, lastMessage: 0 },
+    { chat: [], id: 2, lastMessage: 0 }
 ];
 
 export default function chatReducer(state = defaultChats, { type, payload }) {
@@ -13,9 +13,10 @@ export default function chatReducer(state = defaultChats, { type, payload }) {
       state.forEach(chats => {
           if (chats.id === payload.id) {
               for (var i = 0; i < payload.message.length; i++){
-              chats.chat = [...chats.chat, payload.message[i]];
-             }
-        }
+                  chats.chat = [...chats.chat, payload.message[i]];
+              }
+              chats.lastMessage = Date.now();
+          }
       });
       return state;
     }
