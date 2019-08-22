@@ -32,8 +32,10 @@ class Chat extends Component {
 
      async getListOfMessagesFromServer() {
         const axios = require('axios');
-        let res = await axios.get('https://localhost:44320/api/SignIn/sendData').then(
-            (resp) => { let dbLength = resp.data.length-1;
+         let res = await axios.post('https://localhost:44320/api/SignIn/sendData', this.props.chat[this.props.chatId].lastMessage).then(
+            (resp) => {
+                console.log(this.props.chat[this.props.chatId].lastMessage);
+                let dbLength = resp.data.length - 1;
                 console.log(resp.data[dbLength]);
                 this.props.onUpdateChat(resp.data, this.props.chatId);
                 this.forceUpdateHandler();
@@ -81,7 +83,7 @@ class Chat extends Component {
 
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
-            , 15000);
+            , 10000);
         console.log("DU...");
 
       //const a = this.fetchProducts();

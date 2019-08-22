@@ -1,9 +1,9 @@
 import { UPDATE_CHAT } from "../Actions/chatActions";
 import chat from "../Components/chat";
 const defaultChats = [
-  { chat: ["WELCOME ON MAIN CHAT"], id: 0, lastMessage: 0 },
-    { chat: [], id: 1, lastMessage: 0 },
-    { chat: [], id: 2, lastMessage: 0 }
+  { chat: ["WELCOME ON MAIN CHAT"], id: 0, lastMessage: 100 },
+    { chat: [], id: 1, lastMessage: 200 },
+    { chat: [], id: 2, lastMessage: 300 }
 ];
 
 export default function chatReducer(state = defaultChats, { type, payload }) {

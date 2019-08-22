@@ -21,7 +21,7 @@ namespace chatGame.Controllers
         private List<String> myStringList = new List<string>();
 
 
-        [HttpGet("sendData")]
+        [HttpPost("sendData")]
         public ActionResult<List<String>> SendDatabaseContent()
         {
 //            dbCon.DatabaseName = "chat_base";
