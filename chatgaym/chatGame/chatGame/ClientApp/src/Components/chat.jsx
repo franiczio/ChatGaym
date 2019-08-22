@@ -83,7 +83,7 @@ class Chat extends Component {
 
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
-            , 10000);
+            , 500);
         console.log("DU...");
 
       //const a = this.fetchProducts();
