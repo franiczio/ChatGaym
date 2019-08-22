@@ -36,7 +36,7 @@ class Chat extends Component {
             (resp) => {
                 console.log(this.props.chat[this.props.chatId].lastMessage);
                 let dbLength = resp.data.length - 1;
-                console.log(resp.data[dbLength]);
+                //console.log(resp.data[dbLength]);
                 this.props.onUpdateChat(resp.data, this.props.chatId);
                 this.forceUpdateHandler();
             });

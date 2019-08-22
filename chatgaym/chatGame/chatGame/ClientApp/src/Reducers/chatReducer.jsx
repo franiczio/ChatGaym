@@ -15,7 +15,9 @@ export default function chatReducer(state = defaultChats, { type, payload }) {
               for (var i = 0; i < payload.message.length; i++){
                   chats.chat = [...chats.chat, payload.message[i]];
               }
-              chats.lastMessage = Date.now();
+              if (payload.message.length > 0) {
+                  chats.lastMessage = Date.now();
+              }
           }
       });
       return state;
