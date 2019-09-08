@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-
 class SignIn extends Component {
   closeWindow = () => {
     this.props.history.push("/");
-  };
+    };
+  
+
   render() {
     return (
       <Fragment>

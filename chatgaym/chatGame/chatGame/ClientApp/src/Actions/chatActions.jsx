@@ -9,3 +9,4 @@ export const updateChat = (newMessage, chatId) => {
     }
   };
 };
+//TODO create function witch is used to trigger reucer.
