@@ -1,9 +1,9 @@
 import { UPDATE_CHAT } from "../Actions/chatActions";
 import chat from "../Components/chat";
 const defaultChats = [
-  { chat: ["WELCOME ON MAIN CHAT"], id: 0, lastMessage: 100 },
-    { chat: [], id: 1, lastMessage: 200 },
-    { chat: [], id: 2, lastMessage: 300 }
+    { chat: ["WELCOME ON MAIN CHAT"], id: 0, lastMessage: 10 },
+    { chat: [], id: 1, lastMessage: 10 },
+    { chat: [], id: 2, lastMessage: 10 }
 ];
 
 export default function chatReducer(state = defaultChats, { type, payload }) {
@@ -26,7 +26,6 @@ export default function chatReducer(state = defaultChats, { type, payload }) {
       console.log(state);
       return state;
       }
-      //TODO new case for return chat content from C# server, and parse it to list.
     default:
       return state;
   }
