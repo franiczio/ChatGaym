@@ -9,15 +9,9 @@ namespace chatGame.DB
 {
     public class DBConnection
     {
-//        public DBConnection()
-//        {
-//        }
+
         private string databaseName = string.Empty;
-//        public string DatabaseName
-//        {
-//            get { return databaseName; }
-//            set { databaseName = value; }
-//        }
+
         
         public string Password { get; set; }
 

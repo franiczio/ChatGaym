@@ -78,6 +78,7 @@ namespace chatGame.Controllers
                 }
                 reader.Close();
             }
+
             dbCon.Close();
             return newMessages;
         }

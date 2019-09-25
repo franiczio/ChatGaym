@@ -55,7 +55,8 @@ class Chat extends Component {
         event.target.value = "";
         this.forceUpdate();
       }
-  }
+    }
+
   
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
@@ -72,7 +73,7 @@ class Chat extends Component {
           ))}
         </div>
         <form>
-          <textarea type="text" onKeyDown={this.onUpdateChat} />
+          <textarea type="text" onKeyDown={this.onUpdateChat} /> 
         </form>
       </Fragment>
     );
