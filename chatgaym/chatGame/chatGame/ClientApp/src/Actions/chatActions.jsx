@@ -9,3 +9,4 @@ export const updateChat = (newMessage, chatId) => {
     }
   };
 };
+
