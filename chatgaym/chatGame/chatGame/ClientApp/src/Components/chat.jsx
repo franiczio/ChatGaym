@@ -10,21 +10,10 @@ class Chat extends Component {
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
       this.sendMessageToDB = this.sendMessageToDB.bind(this);
       this.getListOfMessagesFromServer = this.getListOfMessagesFromServer.bind(this);
-//    this.fetchProducts = this.fetchProducts.bind(this);
   }
-
-//    fetchProducts() {
-//        fetch('https://localhost:44320/api/SignIn').then((response) => response.json())
-//            .then((responseJSON) => {
-//                this.props.onUpdateChat(responseJSON, this.props.chatId);
-//            });
-//    }
 
     async  useAxios() {
         const axios = require('axios');
-
-
-
         let res = await axios.post('https://localhost:44320/api/SignIn').then(resp => {
             console.log(resp);
         });
@@ -36,13 +25,11 @@ class Chat extends Component {
             (resp) => {
                 console.log(this.props.chat[this.props.chatId].lastMessage);
                 let dbLength = resp.data.length - 1;
-                //console.log(resp.data[dbLength]);
                 this.props.onUpdateChat(resp.data, this.props.chatId);
                 this.forceUpdateHandler();
             });
-//        this.forceUpdate();
     }
-//    this.props.onUpdateChat(resp.data[dbLength], this.props.chatId);
+
     async sendMessageToDB(message) {
         const axios = require('axios');
         let messageTime = Date.now();
@@ -57,37 +44,24 @@ class Chat extends Component {
 
     forceUpdateHandler() {
     this.forceUpdate();
-    console.log("forsłem");
   }
 
   onUpdateChat(event) {
     if (event.key === "Enter") {
-//        this.props.onUpdateChat(event.target.value, this.props.chatId);
         this.sendMessageToDB(event.target.value);
         this.getListOfMessagesFromServer();
         event.target.value = "";
         this.forceUpdate();
       }
-//      if (event.key === "a") {
-//          console.log("klikłem spacje");
-//          this.getListOfMessagesFromServer();
-//          this.forceUpdate();
-//
-//      }
-  }
+    }
+
   functionToTryEvents() {
-     // console.log("Now its working");
-      console.log("da");
     }
   
 
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
             , 500);
-        console.log("DU...");
-
-      //const a = this.fetchProducts();
-      //console.log(a);
     }
 
   render() {
@@ -100,7 +74,7 @@ class Chat extends Component {
           ))}
         </div>
         <form>
-          <textarea type="text" onKeyDown={this.onUpdateChat} /> //return chat content with onUpdateChat method.
+          <textarea type="text" onKeyDown={this.onUpdateChat} /> 
         </form>
       </Fragment>
     );

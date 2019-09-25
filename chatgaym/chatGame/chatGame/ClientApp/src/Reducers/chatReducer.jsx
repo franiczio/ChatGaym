@@ -26,7 +26,6 @@ export default function chatReducer(state = defaultChats, { type, payload }) {
       console.log(state);
       return state;
       }
-      //TODO new case for return chat content from C# server, and parse it to list.
     default:
       return state;
   }

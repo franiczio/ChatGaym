@@ -34,7 +34,6 @@ class UserList extends Component {
   }
 
   componentDidMount() {
-    // this method is doing things before render
   }
 
   render() {
@@ -65,12 +64,8 @@ class UserList extends Component {
   }
 }
 
-// UserList.protoTypes = {
-//   player: PropTypes.array.isRequired
-// };
 
 const mapStateToProps = state => {
-  // player: state.player;
   return state;
 };
 const mapActionsToProps = {

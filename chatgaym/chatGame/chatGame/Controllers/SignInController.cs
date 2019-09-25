@@ -24,8 +24,6 @@ namespace chatGame.Controllers
         [HttpPost("sendData")]
         public ActionResult<List<String>> SendDatabaseContent()
         {
-            //            dbCon.DatabaseName = "chat_base";
-            //            dbCon.Connect();
             var reader = new StreamReader(Request.Body);
             var body = reader.ReadToEnd();
             long lastMessageTime = long.Parse(body);
@@ -52,14 +50,8 @@ namespace chatGame.Controllers
         [HttpGet]
         public ActionResult<List<String>> ResponseTest()
         {
-//            if (dbCon.Connection == null)
-//            {
-                //dbCon.DatabaseName = "chat_base";
                 dbCon.Connect();
                 dbConInsert.Connect();
-
-            //            }
-
             return Ok();
           
         }
@@ -73,7 +65,6 @@ namespace chatGame.Controllers
 
         public List<string> getDBContent(long lastMessageTime)
         {
-//            dbCon.DatabaseName = "chat_base";
             dbCon.Connect();
             List<string> newMessages = new List<string>();
             string result = string.Empty;
@@ -90,14 +81,12 @@ namespace chatGame.Controllers
                 reader.Close();
             }
 
-            //reader.Close();
             dbCon.Close();
             return newMessages;
         }
 
         public void AddMessageToDB(string message,int id, long time)
         {
-            //dbConInsert.DatabaseName = "chat_base";
             dbConInsert.Connect();
 
             MySqlCommand newCommand = new MySqlCommand();

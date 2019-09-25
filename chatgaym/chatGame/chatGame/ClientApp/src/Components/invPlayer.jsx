@@ -10,7 +10,6 @@ class InvPlayer extends Component {
   }
 
   createTable = () => {
-    console.log("działam");
     this.props.history.push("/table");
   };
 
