@@ -8,22 +8,25 @@ class Chat extends Component {
     super(props);
     this.onUpdateChat = this.onUpdateChat.bind(this);
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-      this.sendMessageToDB = this.sendMessageToDB.bind(this);
-      this.getListOfMessagesFromServer = this.getListOfMessagesFromServer.bind(this);
+    this.sendMessageToDB = this.sendMessageToDB.bind(this);
+    this.getListOfMessagesFromServer = this.getListOfMessagesFromServer.bind(this);
   }
 
     async  useAxios() {
         const axios = require('axios');
         let res = await axios.post('https://localhost:44320/api/SignIn').then(resp => {
-            console.log(resp);
         });
     }
 
      async getListOfMessagesFromServer() {
-        const axios = require('axios');
-         let res = await axios.post('https://localhost:44320/api/SignIn/sendData', this.props.chat[this.props.chatId].lastMessage).then(
+         const axios = require('axios');
+         var myChat=this.props.chat[0];
+         for (var i = 0; i < this.props.chat.length; i++) {
+             if (this.props.chat[i].id === this.props.chatId)
+                 myChat = this.props.chat[i];
+         }
+         let res = await axios.post('https://localhost:44320/api/SignIn/sendData', myChat.lastMessage).then(
             (resp) => {
-                console.log(this.props.chat[this.props.chatId].lastMessage);
                 let dbLength = resp.data.length - 1;
                 this.props.onUpdateChat(resp.data, this.props.chatId);
                 this.forceUpdateHandler();
@@ -41,7 +44,6 @@ class Chat extends Component {
         console.log(body);
         let res = await axios.post('https://localhost:44320/api/SignIn/getData', JSON.stringify(body));
     }
-
     forceUpdateHandler() {
     this.forceUpdate();
   }
@@ -55,10 +57,7 @@ class Chat extends Component {
       }
     }
 
-  functionToTryEvents() {
-    }
   
-
     componentDidMount() {
         setInterval(this.getListOfMessagesFromServer
             , 500);

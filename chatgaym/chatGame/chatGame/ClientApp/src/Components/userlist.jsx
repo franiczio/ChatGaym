@@ -4,7 +4,6 @@ import userLogin from "../Actions/playerActions";
 import InvPlayer from "../Components/invPlayer";
 import * as invitationModule from "../Actions/invitationActions";
 import Chat from "../Components/chat";
-// import PropTypes from "prop-types";
 
 class UserList extends Component {
   constructor(props) {

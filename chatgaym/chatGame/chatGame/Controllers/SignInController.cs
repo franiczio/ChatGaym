@@ -20,7 +20,6 @@ namespace chatGame.Controllers
         private DBConnection dbConInsert = new DBConnection("chat_base");
         private List<String> myStringList = new List<string>();
 
-
         [HttpPost("sendData")]
         public ActionResult<List<String>> SendDatabaseContent()
         {
@@ -53,7 +52,6 @@ namespace chatGame.Controllers
                 dbCon.Connect();
                 dbConInsert.Connect();
             return Ok();
-          
         }
 
         [HttpPost]
